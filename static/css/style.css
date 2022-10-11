@@ -1,0 +1,100 @@
+:root {
+  --color-1: #ede4e0;
+  --color-2: #c8dbbe;
+  --color-3: #9f8772;
+  --color-4: #665a48;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h3 {
+  margin: 0;
+}
+
+a {
+  color: var(--color-3);
+  margin: 0;
+}
+
+a:visited {
+  color: var(--color-3);
+}
+
+body {
+  color: var(--color-1);
+  background-color: var(--color-2);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.cafe-card {
+  background-color: var(--color-4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 380px;
+  margin: 20px 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cafe-card img {
+  width: 300px;
+  height: 300px;
+}
+
+.cafe-card:hover .details {
+  transform: translateY(0);
+}
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-area {
+  padding: 20px;
+}
+
+.edit-area button {
+  cursor: pointer;
+  font-size: larger;
+  background: transparent;
+  border: 0;
+  color: inherit;
+}
+
+.edit-area button:active {
+  transform: scale(0.9);
+}
+
+.info {
+  padding: 15px;
+}
+
+.details {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  background-color: var(--color-4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(-101%);
+  transition: transform 0.3s ease;
+}
+
+.details input {
+  appearance: "span";
+}
