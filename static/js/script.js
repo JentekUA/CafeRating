@@ -1,8 +1,16 @@
 const cafes = document.querySelectorAll(".cafe-card");
-const edit = document.querySelectorAll(".edit");
 
-edit.forEach((item, idx) => {
-  item.addEventListener("click", () => {
-    console.log(cafes[idx].querySelectorAll(".prop-value"));
+cafes.forEach(cafe => {
+  //configure delete confirmation
+  const deleteBtn = cafe.querySelector(".delete");
+  const delConfirm = cafe.querySelector(".del-confirm");
+  deleteBtn.addEventListener("click", () => {
+    delConfirm.classList.add("display");
+  });
+
+  //configure cancel btn
+  const cancelBtn = delConfirm.querySelector(".cancel");
+  cancelBtn.addEventListener("click", () => {
+    delConfirm.classList.remove("display");
   });
 });
