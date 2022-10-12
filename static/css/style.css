@@ -37,7 +37,7 @@ body {
   justify-content: flex-start;
   flex-wrap: wrap;
   margin: 0;
-  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .cafe-card {
@@ -53,6 +53,7 @@ body {
 }
 
 .cafe-card img {
+  object-fit: cover;
   width: 300px;
   height: 300px;
 }
@@ -65,10 +66,13 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-grow: 1;
+  padding: 0 15px;
 }
 
 .edit-area {
-  padding: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .edit-area button {
@@ -80,10 +84,6 @@ body {
 
 .edit-area button:active {
   transform: scale(0.9);
-}
-
-.info {
-  padding: 15px;
 }
 
 .details {

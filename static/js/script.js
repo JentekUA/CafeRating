@@ -4,26 +4,30 @@ cafes.forEach(cafe => {
   //configure delete confirmation
   const deleteBtn = cafe.querySelector(".delete");
   const delConfirm = cafe.querySelector(".del-confirm");
-  deleteBtn.addEventListener("click", () => {
+  deleteBtn.addEventListener("click", e => {
+    e.preventDefault();
     delConfirm.classList.add("display");
   });
 
   //configure cancel btn
   const cancelDel = delConfirm.querySelector(".cancel");
-  cancelDel.addEventListener("click", () => {
+  cancelDel.addEventListener("click", e => {
+    e.preventDefault();
     delConfirm.classList.remove("display");
   });
 
   //configure edit form appearence
   const editBtn = cafe.querySelector(".edit");
   const editForm = cafe.querySelector(".edit-form");
-  editBtn.addEventListener("click", () => {
+  editBtn.addEventListener("click", e => {
+    e.preventDefault();
     editForm.classList.add("display");
   });
 
   //configure cancel editing
   const cancelEdit = editForm.querySelector(".cancel");
-  cancelEdit.addEventListener("click", () => {
+  cancelEdit.addEventListener("click", e => {
+    e.preventDefault();
     editForm.classList.remove("display");
   });
 

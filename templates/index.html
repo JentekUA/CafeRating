@@ -9,6 +9,7 @@
     <title>Cafe Rating</title>
   </head>
   <body>
+    {% for cafe in cafes %}
     <div class="cafe-card">
       <div class="details">
         <table>
@@ -17,7 +18,11 @@
               <span>Sockets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
+              {% if cafe.has_sockets %}
+              <i class="fa fa-check" aria-hidden="true"></i>
+              {% else %}
               <i class="fa fa-ban" aria-hidden="true"></i>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -25,7 +30,11 @@
               <span>WIFI <i class="fa fa-wifi fa-xs" aria-hidden="true"></i>:</span>
             </td>
             <td>
+              {% if cafe.has_wifi %}
               <i class="fa fa-check" aria-hidden="true"></i>
+              {% else %}
+              <i class="fa fa-ban" aria-hidden="true"></i>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -33,7 +42,11 @@
               <span>Calls <i class="fa fa-phone fa-xs" aria-hidden="true"></i>:</span>
             </td>
             <td>
+              {% if cafe.can_take_calls %}
               <i class="fa fa-check" aria-hidden="true"></i>
+              {% else %}
+              <i class="fa fa-ban" aria-hidden="true"></i>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -41,7 +54,11 @@
               <span>Bathroom <i class="fas fa-toilet fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
+              {% if cafe.toilet %}
               <i class="fa fa-check" aria-hidden="true"></i>
+              {% else %}
+              <i class="fa fa-ban" aria-hidden="true"></i>
+              {% endif %}
             </td>
           </tr>
           <tr>
@@ -49,7 +66,7 @@
               <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <span>£2.40</span>
+              <span>{{cafe.coffee_price}}</span>
             </td>
           </tr>
           <tr>
@@ -57,12 +74,12 @@
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <span>32</span>
+              <span>{{cafe.seats}}</span>
             </td>
           </tr>
         </table>
       </div>
-      <img src="https://www.fillmurray.com/1000/1000" alt="Test" />
+      <img src="{{cafe.img_url}}" alt="{{cafe.name}}" />
       <div class="del-confirm">
         <h3>Do you really want to delete this cafe from the list?</h3>
         <form action="#">
@@ -168,8 +185,8 @@
       </form>
       <div class="card-bottom">
         <div class="info">
-          <h3>Name</h3>
-          <small><a href="#">Location</a></small>
+          <h3>{{cafe.name}}</h3>
+          <small><a href="{{cafe.map_url}}">{{cafe.location}}</a></small>
         </div>
         <div class="edit-area">
           <button class="edit"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
@@ -177,6 +194,7 @@
         </div>
       </div>
     </div>
+    {% endfor %}
     <script src="{{url_for('static', filename='js/script.js')}}"></script>
   </body>
 </html>
