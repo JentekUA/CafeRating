@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Cafe Rating</title>
   </head>
@@ -14,7 +14,7 @@
         <table>
           <tr>
             <td>
-              <span>Sokets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
+              <span>Sockets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
               <i class="fa fa-ban" aria-hidden="true"></i>
@@ -57,7 +57,7 @@
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <span">32</span>
+              <span>32</span>
             </td>
           </tr>
         </table>
@@ -74,7 +74,7 @@
         <table>
           <tr>
             <td>
-              <span>Name: </span>
+              <span>Name <i class="fa-solid fa-signature fa-xs"></i>: </span>
             </td>
             <td>
               <input type="text">
@@ -82,7 +82,7 @@
           </tr>
           <tr>
             <td>
-              <span>Location: </span>
+              <span>Location <i class="fa-solid fa-location-dot fa-xs"></i>: </span>
             </td>
             <td>
               <input type="text">
@@ -90,7 +90,7 @@
           </tr>
           <tr>
             <td>
-              <span>Location URL: </span>
+              <span>Location URL <i class="fa-solid fa-link fa-xs"></i>: </span>
             </td>
             <td>
               <input type="url">
@@ -98,13 +98,13 @@
           </tr>
           <tr>
             <td>
-              <span>Sokets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
+              <span>Sockets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="sokets">
+                <input class="hidden-checkbox" type="checkbox" name="Sockets">
               </div>
             </td>
           </tr>
@@ -173,10 +173,10 @@
         </div>
         <div class="edit-area">
           <button class="edit"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
-          <button class="delete" d><i class="fa-solid fa-square-minus"></i></button>
+          <button class="delete"><i class="fa-solid fa-square-minus"></i></button>
         </div>
       </div>
     </div>
-    <script src="/static/js/script.js"></script>
+    <script src="{{url_for('static', filename='js/script.js')}}"></script>
   </body>
 </html>
