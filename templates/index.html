@@ -10,24 +10,6 @@
   </head>
   <body>
     <div class="cafe-card">
-      <img src="https://www.fillmurray.com/1000/1000" alt="Test" />
-      <div class="del-confirm">
-        <h3>Do you really want to delete this cafe from the list?</h3>
-        <form action="#">
-          <button class="red-conf">Yes</button>
-          <button class="cancel">No</button>
-        </form>
-      </div>
-      <div class="card-bottom">
-        <div class="info">
-          <h3>Name</h3>
-          <small><a href="#">Location</a></small>
-        </div>
-        <div class="edit-area">
-          <button class="edit"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
-          <button class="delete" d><i class="fa-solid fa-square-minus"></i></button>
-        </div>
-      </div>
       <div class="details">
         <table>
           <tr>
@@ -64,10 +46,10 @@
           </tr>
           <tr>
             <td>
-              <span>Coffe Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
+              <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <span class="prop-value">£2.40</span>
+              <span>£2.40</span>
             </td>
           </tr>
           <tr>
@@ -75,10 +57,124 @@
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <span class="prop-value">32</span>
+              <span">32</span>
             </td>
           </tr>
         </table>
+      </div>
+      <img src="https://www.fillmurray.com/1000/1000" alt="Test" />
+      <div class="del-confirm">
+        <h3>Do you really want to delete this cafe from the list?</h3>
+        <form action="#">
+          <button class="red-conf">Yes</button>
+          <button class="cancel">No</button>
+        </form>
+      </div>
+      <form action="#" class="edit-form">
+        <table>
+          <tr>
+            <td>
+              <span>Name: </span>
+            </td>
+            <td>
+              <input type="text">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Location: </span>
+            </td>
+            <td>
+              <input type="text">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Location URL: </span>
+            </td>
+            <td>
+              <input type="url">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Sokets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="sokets">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>WIFI <i class="fa fa-wifi fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="wifi">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Calls <i class="fa fa-phone fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="calls">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Bathroom <i class="fas fa-toilet fa-xs" aria-hidden="true"></i>: </span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="bathroom">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <input type="text">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <input type="text">
+            </td>
+          </tr>
+        </table>
+        <div class="edit-form-controls">
+          <button type="submit">Save Changes</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </form>
+      <div class="card-bottom">
+        <div class="info">
+          <h3>Name</h3>
+          <small><a href="#">Location</a></small>
+        </div>
+        <div class="edit-area">
+          <button class="edit"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></button>
+          <button class="delete" d><i class="fa-solid fa-square-minus"></i></button>
+        </div>
       </div>
     </div>
     <script src="/static/js/script.js"></script>

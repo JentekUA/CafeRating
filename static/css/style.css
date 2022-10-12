@@ -22,6 +22,11 @@ a:visited {
   color: var(--color-3);
 }
 
+button,
+input {
+  color: var(--color-1);
+}
+
 body {
   color: var(--color-1);
   background-color: var(--color-2);
@@ -71,7 +76,6 @@ body {
   font-size: larger;
   background: transparent;
   border: 0;
-  color: inherit;
 }
 
 .edit-area button:active {
@@ -120,7 +124,6 @@ body {
   margin: 0 10px;
   width: 50px;
   border: 0;
-  color: inherit;
 }
 
 .del-confirm button:active {
@@ -133,4 +136,85 @@ body {
 
 .cancel {
   background-color: var(--color-3);
+}
+
+.edit-form {
+  color: inherit;
+  background-color: var(--color-4);
+  padding: 10px 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateX(101%);
+  transition: transform 0.3s ease;
+}
+
+.edit-form input {
+  background-color: var(--color-3);
+  border: 2px solid var(--color-4);
+  caret-color: var(--color-1);
+  padding: 0 10px;
+  border-radius: 15px;
+  width: 155px;
+}
+
+.edit-form.display {
+  transform: translateX(0);
+}
+
+.edit-form tr > td:nth-child(2) {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-form-controls {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px 0;
+}
+
+.edit-form-controls button {
+  background-color: var(--color-3);
+  padding: 5px;
+  color: inherit;
+  border: 0;
+  cursor: pointer;
+}
+
+.edit-form-controls button:active {
+  transform: scale(0.9);
+}
+
+.toggle {
+  background-color: var(--color-4);
+  border: 1px solid var(--color-3);
+  width: 58px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 0;
+}
+
+.toggle button {
+  cursor: pointer;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  height: 101%;
+  width: 50%;
+  background-color: transparent;
+}
+
+.toggle button.checked {
+  background-color: var(--color-3);
+}
+
+.hidden-checkbox {
+  display: none;
 }
