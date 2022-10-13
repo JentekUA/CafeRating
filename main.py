@@ -45,5 +45,13 @@ def cafe(cafe_id: int):
             return jsonify(cafe=requested_cafe.to_dict())
 
 
+@app.route("/cafe/all")
+def get_all_cafes():
+    with Session(engine) as session:
+        all_cafes = session.query(Cafe).all()
+
+        return jsonify(cafes=[cafe_obj.to_dict() for cafe_obj in all_cafes])
+
+
 if __name__ == "__main__":
     app.run(debug=True)

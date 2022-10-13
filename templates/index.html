@@ -94,33 +94,25 @@
             <td>
               <span>Name <i class="fa-solid fa-signature fa-xs"></i>: </span>
             </td>
-            <td>
-              {{edit_form.name(id=False, required=True)}}
-            </td>
+            <td>{{edit_form.name(id=False, required=True)}}</td>
           </tr>
           <tr>
             <td>
               <span>Location <i class="fa-solid fa-location-dot fa-xs"></i>: </span>
             </td>
-            <td>
-              {{edit_form.location(id=False, required=True)}}
-            </td>
+            <td>{{edit_form.location(id=False, required=True)}}</td>
           </tr>
           <tr>
             <td>
               <span>Location URL <i class="fa-solid fa-link fa-xs"></i>: </span>
             </td>
-            <td>
-              {{edit_form.location_url(id=False, required=True, type="url")}}
-            </td>
+            <td>{{edit_form.location_url(id=False, required=True, type="url")}}</td>
           </tr>
           <tr>
             <td>
               <span>Image URL <i class="fa-solid fa-image fa-xs"></i>: </span>
             </td>
-            <td>
-              {{edit_form.img_url(id=False, required=True, type="url")}}
-            </td>
+            <td>{{edit_form.img_url(id=False, required=True, type="url")}}</td>
           </tr>
           <tr>
             <td>
@@ -174,17 +166,13 @@
             <td>
               <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
             </td>
-            <td>
-              {{edit_form.coffee_price(id=False, required=True, pattern="^\W\d[1-9]*\.\d{2}$", title="Price must be in a format: [currency character]d.dd.")}}
-            </td>
+            <td>{{edit_form.coffee_price(id=False, required=True, pattern="^\W\d[1-9]*\.\d{2}$", title="Price must be in a format: [currency character]d.dd.")}}</td>
           </tr>
           <tr>
             <td>
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
-            <td>
-              {{edit_form.number_of_seats(id=False, required=True, pattern="^[^a-zA-z]+$", title="Only digits and special characters allowed.")}}
-            </td>
+            <td>{{edit_form.number_of_seats(id=False, required=True, pattern="^[^a-zA-z]+$", title="Only digits and special characters allowed.")}}</td>
           </tr>
         </table>
         <div class="edit-form-controls">

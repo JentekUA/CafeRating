@@ -9,7 +9,7 @@ cafes.forEach(cafe => {
     delConfirm.classList.add("display");
   });
 
-  //configure cancel btn
+  //configure delete confirmation cancel btn
   const cancelDel = delConfirm.querySelector(".cancel");
   cancelDel.addEventListener("click", e => {
     e.preventDefault();
@@ -19,8 +19,10 @@ cafes.forEach(cafe => {
   //configure edit form
   const editBtn = cafe.querySelector(".edit");
   const editForm = cafe.querySelector(".edit-form");
+  const nameField = editForm.querySelector("input[name='name']");
   const editToggles = editForm.querySelectorAll(".toggle");
 
+  //open edit form and fill data
   editBtn.addEventListener("click", e => {
     e.preventDefault();
 
@@ -28,6 +30,21 @@ cafes.forEach(cafe => {
     fetchCafeData(editForm.action).then(data => {
       const cafe = data.cafe;
       fillForm(editForm, cafe);
+
+      //save db cafe name
+      const dbCafeName = nameField.value;
+      //Add unique name validation to form name element
+      nameField.addEventListener("input", () => {
+        fetchAllCafes("/cafe/all").then(data => {
+          const cafeNames = data.cafes.map(cafe => cafe.name);
+
+          if (cafeNames.includes(nameField.value) && nameField.value != dbCafeName) {
+            nameField.setCustomValidity("Cafe with this name already exist.");
+            nameField.reportValidity();
+          }
+        });
+      });
+
       setToggles(editToggles);
     });
 
