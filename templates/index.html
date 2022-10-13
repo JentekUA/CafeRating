@@ -54,7 +54,7 @@
               <span>Bathroom <i class="fas fa-toilet fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
-              {% if cafe.toilet %}
+              {% if cafe.has_toilet %}
               <i class="fa fa-check" aria-hidden="true"></i>
               {% else %}
               <i class="fa fa-ban" aria-hidden="true"></i>
@@ -87,14 +87,14 @@
           <button class="cancel">No</button>
         </form>
       </div>
-      <form action="#" class="edit-form">
+      <form action="{{url_for('cafe', cafe_id=cafe.id)}}" class="edit-form">
         <table>
           <tr>
             <td>
               <span>Name <i class="fa-solid fa-signature fa-xs"></i>: </span>
             </td>
             <td>
-              <input type="text">
+              <input name="name" type="text">
             </td>
           </tr>
           <tr>
@@ -102,7 +102,7 @@
               <span>Location <i class="fa-solid fa-location-dot fa-xs"></i>: </span>
             </td>
             <td>
-              <input type="text">
+              <input name="location" type="text">
             </td>
           </tr>
           <tr>
@@ -110,7 +110,7 @@
               <span>Location URL <i class="fa-solid fa-link fa-xs"></i>: </span>
             </td>
             <td>
-              <input type="url">
+              <input name="location-url" type="url">
             </td>
           </tr>
           <tr>
@@ -121,7 +121,7 @@
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="Sockets">
+                <input class="hidden-checkbox" type="checkbox" name="sockets">
               </div>
             </td>
           </tr>
@@ -166,7 +166,7 @@
               <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <input type="text">
+              <input name="coffee-price" type="text">
             </td>
           </tr>
           <tr>
@@ -174,7 +174,7 @@
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
             <td>
-              <input type="text">
+              <input name="number-of-seats" type="text">
             </td>
           </tr>
         </table>
