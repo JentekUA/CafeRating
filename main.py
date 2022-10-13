@@ -1,5 +1,6 @@
-from flask import Flask, render_template, url_for, jsonify, redirect, Response, abort
+from flask import Flask, render_template, url_for, jsonify, redirect, Response, abort, request
 from sqlalchemy.orm import Session
+from sqlalchemy.exc import IntegrityError
 from db_schemas import engine, Cafe
 from forms import EditForm
 from os import getenv
@@ -23,26 +24,29 @@ def cafe(cafe_id: int):
     edit_form = EditForm()
 
     if edit_form.validate_on_submit():
-        with Session(engine) as session:
-            # unique name validation
-            if edit_form.name.data in [cafe_obj.name for cafe_obj in session.query(Cafe).all()]:
-                return abort(Response("ERROR: Cafe name that is already in the database provided.", 422))
+        try:
+            with Session(engine) as session:
+                edited_cafe = session.query(Cafe).where(Cafe.id == cafe_id).first()
+                edited_cafe.name = edit_form.name.data
+                edited_cafe.map_url = edit_form.location_url.data
+                edited_cafe.img_url = edit_form.img_url.data
+                edited_cafe.location = edit_form.location.data
+                edited_cafe.has_sockets = edit_form.sockets.data
+                edited_cafe.has_toilet = edit_form.bathroom.data
+                edited_cafe.has_wifi = edit_form.wifi.data
+                edited_cafe.can_take_calls = edit_form.calls.data
+                edited_cafe.seats = edit_form.number_of_seats.data
+                edited_cafe.coffee_price = edit_form.coffee_price.data
 
-            edited_cafe = session.query(Cafe).where(Cafe.id == cafe_id).first()
-            edited_cafe.name = edit_form.name.data
-            edited_cafe.map_url = edit_form.location_url.data
-            edited_cafe.img_url = edit_form.img_url.data
-            edited_cafe.location = edit_form.location.data
-            edited_cafe.has_sockets = edit_form.sockets.data
-            edited_cafe.has_toilet = edit_form.bathroom.data
-            edited_cafe.has_wifi = edit_form.wifi.data
-            edited_cafe.can_take_calls = edit_form.calls.data
-            edited_cafe.seats = edit_form.number_of_seats.data
-            edited_cafe.coffee_price = edit_form.coffee_price.data
+                session.commit()
+        except IntegrityError:
+            return abort(Response("Non unique cafe name provided.", 422))
+        else:
+            return redirect(url_for('home'), code=303)
 
-            session.commit()
+    elif request.method == "POST":
+        return abort(jsonify(errors=edit_form.errors), 422)
 
-        return redirect(url_for('home'), code=303)
     else:
         with Session(engine) as session:
             requested_cafe = session.query(Cafe).where(Cafe.id == cafe_id).first()
