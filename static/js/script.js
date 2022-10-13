@@ -16,10 +16,10 @@ cafes.forEach(cafe => {
     delConfirm.classList.remove("display");
   });
 
-  //configure edit form appearence
+  //configure edit form
   const editBtn = cafe.querySelector(".edit");
   const editForm = cafe.querySelector(".edit-form");
-  const toggles = editForm.querySelectorAll(".toggle");
+  const editToggles = editForm.querySelectorAll(".toggle");
 
   editBtn.addEventListener("click", e => {
     e.preventDefault();
@@ -27,30 +27,8 @@ cafes.forEach(cafe => {
     //fetch data and display it on form
     fetchCafeData(editForm.action).then(data => {
       const cafe = data.cafe;
-      editForm.querySelector("input[name='name']").value = cafe.name;
-      editForm.querySelector("input[name='location']").value = cafe.location;
-      editForm.querySelector("input[name='location-url']").value = cafe.map_url;
-      editForm.querySelector("input[name='img-url']").value = cafe.img_url;
-      editForm.querySelector("input[name='sockets']").checked = cafe.has_sockets;
-      editForm.querySelector("input[name='wifi']").checked = cafe.has_wifi;
-      editForm.querySelector("input[name='calls']").checked = cafe.can_take_calls;
-      editForm.querySelector("input[name='bathroom']").checked = cafe.has_toilet;
-      editForm.querySelector("input[name='coffee-price']").value = cafe.coffee_price;
-      editForm.querySelector("input[name='number-of-seats']").value = cafe.seats;
-
-      toggles.forEach(toggle => {
-        const checkBtn = toggle.querySelector(".toggle-check");
-        const uncheckBtn = toggle.querySelector(".toggle-uncheck");
-        const checkbox = toggle.querySelector(".hidden-checkbox");
-
-        if (checkbox.checked) {
-          checkBtn.classList.add("checked");
-          uncheckBtn.classList.remove("checked");
-        } else {
-          checkBtn.classList.remove("checked");
-          uncheckBtn.classList.add("checked");
-        }
-      });
+      fillForm(editForm, cafe);
+      setToggles(editToggles);
     });
 
     editForm.classList.add("display");
@@ -64,6 +42,53 @@ cafes.forEach(cafe => {
   });
 
   ///add checking logic for toggle buttons
+  configureToggles(editToggles);
+});
+
+async function fetchCafeData(url) {
+  const promise = await fetch(url);
+  const data = promise.json();
+
+  return data;
+}
+
+async function fetchAllCafes(url) {
+  const promise = await fetch(url);
+  const data = promise.json();
+
+  return data;
+}
+
+function fillForm(form, cafeData) {
+  form.querySelector("input[name='name']").value = cafeData.name;
+  form.querySelector("input[name='location']").value = cafeData.location;
+  form.querySelector("input[name='location-url']").value = cafeData.map_url;
+  form.querySelector("input[name='img-url']").value = cafeData.img_url;
+  form.querySelector("input[name='sockets']").checked = cafeData.has_sockets;
+  form.querySelector("input[name='wifi']").checked = cafeData.has_wifi;
+  form.querySelector("input[name='calls']").checked = cafeData.can_take_calls;
+  form.querySelector("input[name='bathroom']").checked = cafeData.has_toilet;
+  form.querySelector("input[name='coffee-price']").value = cafeData.coffee_price;
+  form.querySelector("input[name='number-of-seats']").value = cafeData.seats;
+}
+
+function setToggles(toggles) {
+  toggles.forEach(toggle => {
+    const checkBtn = toggle.querySelector(".toggle-check");
+    const uncheckBtn = toggle.querySelector(".toggle-uncheck");
+    const checkbox = toggle.querySelector(".hidden-checkbox");
+
+    if (checkbox.checked) {
+      checkBtn.classList.add("checked");
+      uncheckBtn.classList.remove("checked");
+    } else {
+      checkBtn.classList.remove("checked");
+      uncheckBtn.classList.add("checked");
+    }
+  });
+}
+
+function configureToggles(toggles) {
   toggles.forEach(toggle => {
     const checkBtn = toggle.querySelector(".toggle-check");
     const uncheckBtn = toggle.querySelector(".toggle-uncheck");
@@ -83,11 +108,4 @@ cafes.forEach(cafe => {
       checkbox.checked = false;
     });
   });
-});
-
-async function fetchCafeData(url) {
-  const promise = await fetch(url);
-  const data = promise.json();
-
-  return data;
 }
