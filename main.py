@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, jsonify, redirect
+from flask import Flask, render_template, url_for, jsonify, redirect, Response, abort
 from sqlalchemy.orm import Session
 from db_schemas import engine, Cafe
 from forms import EditForm
@@ -24,6 +24,10 @@ def cafe(cafe_id: int):
 
     if edit_form.validate_on_submit():
         with Session(engine) as session:
+            # unique name validation
+            if edit_form.name.data in [cafe_obj.name for cafe_obj in session.query(Cafe).all()]:
+                return abort(Response("ERROR: Cafe name that is already in the database provided.", 422))
+
             edited_cafe = session.query(Cafe).where(Cafe.id == cafe_id).first()
             edited_cafe.name = edit_form.name.data
             edited_cafe.map_url = edit_form.location_url.data
