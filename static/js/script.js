@@ -30,12 +30,11 @@ cafes.forEach(cafe => {
       editForm.querySelector("input[name='name']").value = cafe.name;
       editForm.querySelector("input[name='location']").value = cafe.location;
       editForm.querySelector("input[name='location-url']").value = cafe.map_url;
+      editForm.querySelector("input[name='img-url']").value = cafe.img_url;
       editForm.querySelector("input[name='sockets']").checked = cafe.has_sockets;
       editForm.querySelector("input[name='wifi']").checked = cafe.has_wifi;
       editForm.querySelector("input[name='calls']").checked = cafe.can_take_calls;
       editForm.querySelector("input[name='bathroom']").checked = cafe.has_toilet;
-      console.log(editForm.querySelector("input[name='bathroom']").checked);
-      console.log(cafe.has_toilet);
       editForm.querySelector("input[name='coffee-price']").value = cafe.coffee_price;
       editForm.querySelector("input[name='number-of-seats']").value = cafe.seats;
 
