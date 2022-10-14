@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, jsonify, redirect, Response, abort, request
+from flask import Flask, render_template, url_for, jsonify, redirect, abort, request
 from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 from db_schemas import engine, Cafe
@@ -40,12 +40,12 @@ def cafe(cafe_id: int):
 
                 session.commit()
         except IntegrityError:
-            return abort(Response("Non unique cafe name provided.", 422))
+            return abort(422, "Non unique cafe name provided.")
         else:
             return redirect(url_for('home'), code=303)
 
     elif request.method == "POST":
-        return abort(jsonify(errors=edit_form.errors), 422)
+        return abort(422, edit_form.errors)
 
     else:
         with Session(engine) as session:
