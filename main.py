@@ -61,5 +61,15 @@ def get_all_cafes():
         return jsonify(cafes=[cafe_obj.to_dict() for cafe_obj in all_cafes])
 
 
+@app.route("/delete-cafe/<int:cafe_id>")
+def delete_cafe(cafe_id: int):
+    with Session(engine) as session:
+        cafe_obj = session.query(Cafe).where(Cafe.id == cafe_id).first()
+        session.delete(cafe_obj)
+        session.commit()
+
+        return redirect(url_for("home"), code=303)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
