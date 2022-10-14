@@ -54,7 +54,7 @@
               <span>Bathroom <i class="fas fa-toilet fa-xs" aria-hidden="true"></i>: </span>
             </td>
             <td>
-              {% if cafe.toilet %}
+              {% if cafe.has_toilet %}
               <i class="fa fa-check" aria-hidden="true"></i>
               {% else %}
               <i class="fa fa-ban" aria-hidden="true"></i>
@@ -87,31 +87,32 @@
           <button class="cancel">No</button>
         </form>
       </div>
-      <form action="#" class="edit-form">
+      <form action="{{url_for('cafe', cafe_id=cafe.id)}}" method="POST" class="edit-form">
+        {{edit_form.csrf_token}}
         <table>
           <tr>
             <td>
               <span>Name <i class="fa-solid fa-signature fa-xs"></i>: </span>
             </td>
-            <td>
-              <input type="text">
-            </td>
+            <td>{{edit_form.name(id=False, required=True)}}</td>
           </tr>
           <tr>
             <td>
               <span>Location <i class="fa-solid fa-location-dot fa-xs"></i>: </span>
             </td>
-            <td>
-              <input type="text">
-            </td>
+            <td>{{edit_form.location(id=False, required=True)}}</td>
           </tr>
           <tr>
             <td>
               <span>Location URL <i class="fa-solid fa-link fa-xs"></i>: </span>
             </td>
+            <td>{{edit_form.location_url(id=False, required=True, type="url")}}</td>
+          </tr>
+          <tr>
             <td>
-              <input type="url">
+              <span>Image URL <i class="fa-solid fa-image fa-xs"></i>: </span>
             </td>
+            <td>{{edit_form.img_url(id=False, required=True, type="url")}}</td>
           </tr>
           <tr>
             <td>
@@ -121,7 +122,7 @@
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="Sockets">
+                {{edit_form.sockets(id=False, class="hidden-checkbox")}}
               </div>
             </td>
           </tr>
@@ -133,7 +134,7 @@
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="wifi">
+                {{edit_form.wifi(id=False, class="hidden-checkbox")}}
               </div>
             </td>
           </tr>
@@ -145,7 +146,7 @@
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="calls">
+                {{edit_form.calls(id=False, class="hidden-checkbox")}}
               </div>
             </td>
           </tr>
@@ -157,7 +158,7 @@
               <div class="toggle">
                 <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
                 <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
-                <input class="hidden-checkbox" type="checkbox" name="bathroom">
+                {{edit_form.bathroom(id=False, class="hidden-checkbox")}}
               </div>
             </td>
           </tr>
@@ -165,21 +166,17 @@
             <td>
               <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
             </td>
-            <td>
-              <input type="text">
-            </td>
+            <td>{{edit_form.coffee_price(id=False, required=True, pattern="^\W\d[1-9]*\.\d{2}$", title="Price must be in a format: [currency character]d.dd.")}}</td>
           </tr>
           <tr>
             <td>
               <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
             </td>
-            <td>
-              <input type="text">
-            </td>
+            <td>{{edit_form.number_of_seats(id=False, required=True, pattern="^[^a-zA-z]+$", title="Only digits and special characters allowed.")}}</td>
           </tr>
         </table>
         <div class="edit-form-controls">
-          <button type="submit">Save Changes</button>
+          <button>Save Changes</button>
           <button class="cancel">Cancel</button>
         </div>
       </form>
