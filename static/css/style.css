@@ -31,7 +31,7 @@ body {
   color: var(--color-1);
   background-color: var(--color-2);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -218,4 +218,22 @@ body {
 
 .hidden-checkbox {
   display: none;
+}
+
+.add-new {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 380px;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  background: transparent;
+  border: 12px dashed var(--color-1);
+  border-radius: 10px;
+  margin: 20px 20px;
+}
+
+.add-new:active {
+  transform: scale(0.98);
 }
