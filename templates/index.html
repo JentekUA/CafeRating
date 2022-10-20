@@ -82,7 +82,7 @@
       <img src="{{cafe.img_url}}" alt="{{cafe.name}}" />
       <div class="del-confirm">
         <h3>Do you really want to delete this cafe from the list?</h3>
-        <form action="#">
+        <form action="{{url_for('delete_cafe', cafe_id= cafe.id)}}">
           <button class="red-conf">Yes</button>
           <button class="cancel">No</button>
         </form>
