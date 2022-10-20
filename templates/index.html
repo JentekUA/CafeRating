@@ -9,6 +9,9 @@
     <title>Cafe Rating</title>
   </head>
   <body>
+    <div class="add-container">
+      <iframe src="{{url_for('add_cafe')}}" frameborder="0"> </iframe>
+    </div>
     {% for cafe in cafes %}
     <div class="cafe-card">
       <div class="details">

@@ -71,5 +71,10 @@ def delete_cafe(cafe_id: int):
         return redirect(url_for("home"), code=303)
 
 
+@app.route("/add-cafe", methods=["GET", "POST"])
+def add_cafe():
+    return render_template("add.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
