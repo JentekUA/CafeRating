@@ -296,7 +296,6 @@ body {
   height: 0;
   width: 0;
   z-index: 1;
-  transition: 0.3s ease;
 }
 
 .add-container.display {

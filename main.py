@@ -72,5 +72,30 @@ def delete_cafe(cafe_id: int):
         return redirect(url_for("home"), code=303)
 
 
+@app.route("/add-cafe", methods=["POST"])
+def add_cafe():
+    add_form = CafeForm()
+    try:
+        new_cafe = Cafe()
+        new_cafe.name = add_form.name.data
+        new_cafe.map_url = add_form.location_url.data
+        new_cafe.img_url = add_form.img_url.data
+        new_cafe.location = add_form.location.data
+        new_cafe.has_sockets = add_form.sockets.data
+        new_cafe.has_toilet = add_form.bathroom.data
+        new_cafe.has_wifi = add_form.wifi.data
+        new_cafe.can_take_calls = add_form.calls.data
+        new_cafe.seats = add_form.number_of_seats.data
+        new_cafe.coffee_price = add_form.coffee_price.data
+
+        with Session(engine) as session:
+            session.add(new_cafe)
+            session.commit()
+    except IntegrityError:
+        return abort(422, "Non unique cafe name provided.")
+    else:
+        return redirect(url_for('home'), code=303)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
