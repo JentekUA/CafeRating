@@ -3,7 +3,7 @@ from wtforms import StringField, BooleanField
 from wtforms.validators import URL, Regexp, DataRequired
 
 
-class EditForm(FlaskForm):
+class CafeForm(FlaskForm):
     name = StringField(name="name", validators=[DataRequired()])
     location = StringField(name="location", validators=[DataRequired()])
     location_url = StringField(name="location-url", validators=[DataRequired(), URL()])
