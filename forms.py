@@ -16,7 +16,7 @@ class CafeForm(FlaskForm):
         name="coffee-price",
         validators=[
             DataRequired(),
-            Regexp(r"^\W\d[1-9]*\.\d{2}$", message="Price must be in a format: [currency character]d.dd.")
+            Regexp(r"^\W\d[0-9]*\.\d{2}$", message="Price must be in a format: [currency character]d.dd.")
         ])
     number_of_seats = StringField(
         name="number-of-seats",
