@@ -126,3 +126,22 @@ function configureToggles(toggles) {
     });
   });
 }
+
+const addNew = document.querySelector(".add-new");
+const addCancel = document.querySelector(".add-form-controls .cancel");
+addNew.addEventListener("click", openAddForm);
+addCancel.addEventListener("click", closeAddForm);
+
+function openAddForm() {
+  const addContainer = document.querySelector(".add-container");
+  addContainer.classList.add("display");
+
+  const addToggles = addContainer.querySelectorAll(".toggle");
+  configureToggles(addToggles);
+  setToggles(addToggles);
+}
+
+function closeAddForm() {
+  const addContainer = document.querySelector(".add-container");
+  addContainer.classList.remove("display");
+}
