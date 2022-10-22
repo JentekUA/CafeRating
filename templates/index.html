@@ -10,7 +10,102 @@
   </head>
   <body>
     <div class="add-container">
-      <iframe src="{{url_for('add_cafe')}}" frameborder="0"> </iframe>
+      <form action="#" class="add-form">
+        <table>
+          <tr>
+            <td>
+              <span>Name: </span>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Location: </span>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Location URL: </span>
+            </td>
+            <td>
+              <input type="url" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Sokets <i class="fa fa-plug fa-xs" aria-hidden="true"></i>: </span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="sokets" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>WIFI <i class="fa fa-wifi fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="wifi" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Calls <i class="fa fa-phone fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="calls" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Bathroom <i class="fas fa-toilet fa-xs" aria-hidden="true"></i>: </span>
+            </td>
+            <td>
+              <div class="toggle">
+                <button class="toggle-check"><i class="fa fa-check" aria-hidden="true"></i></button>
+                <button class="toggle-uncheck"><i class="fa fa-ban" aria-hidden="true"></i></button>
+                <input class="hidden-checkbox" type="checkbox" name="bathroom" />
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Coffee Price <i class="fa fa-coffee fa-xs" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span>Number of Seats <i class="fa-solid fa-chair" aria-hidden="true"></i>:</span>
+            </td>
+            <td>
+              <input type="text" />
+            </td>
+          </tr>
+        </table>
+        <div class="add-form-controls">
+          <button type="submit">Save Changes</button>
+          <button class="cancel">Cancel</button>
+        </div>
+      </form>
     </div>
     {% for cafe in cafes %}
     <div class="cafe-card">

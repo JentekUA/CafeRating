@@ -126,3 +126,17 @@ function configureToggles(toggles) {
     });
   });
 }
+
+const addNew = document.querySelector(".add-new");
+addNew.addEventListener("click", () => {
+  openAddForm();
+});
+
+function openAddForm() {
+  const addContainer = document.querySelector(".add-container");
+  addContainer.classList.add("display");
+
+  const addToggles = addContainer.querySelectorAll(".toggle");
+  configureToggles(addToggles);
+  setToggles(addToggles);
+}
